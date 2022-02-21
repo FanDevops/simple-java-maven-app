@@ -5,7 +5,7 @@ pipeline {
         stage('initialize') {
             steps {
                 sh '''
-                       export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text`
+                       ##export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text`
                        export MAVEN_HOME=/usr/share/maven
                        export PATH=$PATH:$MAVEN_HOME/bin
                        mvn --version
@@ -14,7 +14,11 @@ pipeline {
         }
         stage('Build'){
             steps{
-            sh 'mvn clean install'
+                sh '''
+                        export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text
+                        mvn clean install 
+                   '''
+               
             }
             
         }
