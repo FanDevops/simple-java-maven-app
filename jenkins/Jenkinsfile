@@ -15,7 +15,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh '''
-                        export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text'
+                        export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text`
                         mvn clean install 
                    '''
                
