@@ -5,8 +5,8 @@ pipeline {
         stage('initialize') {
             steps {
                 sh '''
-                       export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain com-sample-project --domain-owner 426996824299 --query authorizationToken --output text`
-                       export MAVEN_HOME=/usr/lib/apache-maven-3.6.3
+                       export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zuci --domain-owner 678876462442 --query authorizationToken --output text`
+                       export MAVEN_HOME=/usr/share/maven
                        export PATH=$PATH:$MAVEN_HOME/bin
                        mvn --version
                    '''
